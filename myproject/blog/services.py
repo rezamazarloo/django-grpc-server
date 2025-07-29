@@ -13,6 +13,8 @@ class PostService(Service):
             yield msg
 
     def Create(self, request, context):
+        # print(context.invocation_metadata())
+        # print(context.peer())
         serializer = PostProtoSerializer(message=request)
         serializer.is_valid(raise_exception=True)
         serializer.save()
