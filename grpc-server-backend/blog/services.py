@@ -1,8 +1,8 @@
 import grpc
 from google.protobuf import empty_pb2
 from django_grpc_framework.services import Service
-from blog.models import Post
-from blog.serializers import PostProtoSerializer
+from .models import Post
+from .serializers import PostProtoSerializer
 
 
 class PostService(Service):

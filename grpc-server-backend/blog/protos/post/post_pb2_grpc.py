@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from blog_proto import post_pb2 as blog__proto_dot_post__pb2
+from blog.protos.post import post_pb2 as blog_dot_protos_dot_post_dot_post__pb2
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 
 
@@ -16,28 +16,28 @@ class PostControllerStub(object):
             channel: A grpc.Channel.
         """
         self.List = channel.unary_stream(
-                '/blog_proto.PostController/List',
-                request_serializer=blog__proto_dot_post__pb2.PostListRequest.SerializeToString,
-                response_deserializer=blog__proto_dot_post__pb2.Post.FromString,
+                '/post.PostController/List',
+                request_serializer=blog_dot_protos_dot_post_dot_post__pb2.PostListRequest.SerializeToString,
+                response_deserializer=blog_dot_protos_dot_post_dot_post__pb2.Post.FromString,
                 )
         self.Create = channel.unary_unary(
-                '/blog_proto.PostController/Create',
-                request_serializer=blog__proto_dot_post__pb2.Post.SerializeToString,
-                response_deserializer=blog__proto_dot_post__pb2.Post.FromString,
+                '/post.PostController/Create',
+                request_serializer=blog_dot_protos_dot_post_dot_post__pb2.Post.SerializeToString,
+                response_deserializer=blog_dot_protos_dot_post_dot_post__pb2.Post.FromString,
                 )
         self.Retrieve = channel.unary_unary(
-                '/blog_proto.PostController/Retrieve',
-                request_serializer=blog__proto_dot_post__pb2.PostRetrieveRequest.SerializeToString,
-                response_deserializer=blog__proto_dot_post__pb2.Post.FromString,
+                '/post.PostController/Retrieve',
+                request_serializer=blog_dot_protos_dot_post_dot_post__pb2.PostRetrieveRequest.SerializeToString,
+                response_deserializer=blog_dot_protos_dot_post_dot_post__pb2.Post.FromString,
                 )
         self.Update = channel.unary_unary(
-                '/blog_proto.PostController/Update',
-                request_serializer=blog__proto_dot_post__pb2.Post.SerializeToString,
-                response_deserializer=blog__proto_dot_post__pb2.Post.FromString,
+                '/post.PostController/Update',
+                request_serializer=blog_dot_protos_dot_post_dot_post__pb2.Post.SerializeToString,
+                response_deserializer=blog_dot_protos_dot_post_dot_post__pb2.Post.FromString,
                 )
         self.Destroy = channel.unary_unary(
-                '/blog_proto.PostController/Destroy',
-                request_serializer=blog__proto_dot_post__pb2.Post.SerializeToString,
+                '/post.PostController/Destroy',
+                request_serializer=blog_dot_protos_dot_post_dot_post__pb2.Post.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 )
 
@@ -80,32 +80,32 @@ def add_PostControllerServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'List': grpc.unary_stream_rpc_method_handler(
                     servicer.List,
-                    request_deserializer=blog__proto_dot_post__pb2.PostListRequest.FromString,
-                    response_serializer=blog__proto_dot_post__pb2.Post.SerializeToString,
+                    request_deserializer=blog_dot_protos_dot_post_dot_post__pb2.PostListRequest.FromString,
+                    response_serializer=blog_dot_protos_dot_post_dot_post__pb2.Post.SerializeToString,
             ),
             'Create': grpc.unary_unary_rpc_method_handler(
                     servicer.Create,
-                    request_deserializer=blog__proto_dot_post__pb2.Post.FromString,
-                    response_serializer=blog__proto_dot_post__pb2.Post.SerializeToString,
+                    request_deserializer=blog_dot_protos_dot_post_dot_post__pb2.Post.FromString,
+                    response_serializer=blog_dot_protos_dot_post_dot_post__pb2.Post.SerializeToString,
             ),
             'Retrieve': grpc.unary_unary_rpc_method_handler(
                     servicer.Retrieve,
-                    request_deserializer=blog__proto_dot_post__pb2.PostRetrieveRequest.FromString,
-                    response_serializer=blog__proto_dot_post__pb2.Post.SerializeToString,
+                    request_deserializer=blog_dot_protos_dot_post_dot_post__pb2.PostRetrieveRequest.FromString,
+                    response_serializer=blog_dot_protos_dot_post_dot_post__pb2.Post.SerializeToString,
             ),
             'Update': grpc.unary_unary_rpc_method_handler(
                     servicer.Update,
-                    request_deserializer=blog__proto_dot_post__pb2.Post.FromString,
-                    response_serializer=blog__proto_dot_post__pb2.Post.SerializeToString,
+                    request_deserializer=blog_dot_protos_dot_post_dot_post__pb2.Post.FromString,
+                    response_serializer=blog_dot_protos_dot_post_dot_post__pb2.Post.SerializeToString,
             ),
             'Destroy': grpc.unary_unary_rpc_method_handler(
                     servicer.Destroy,
-                    request_deserializer=blog__proto_dot_post__pb2.Post.FromString,
+                    request_deserializer=blog_dot_protos_dot_post_dot_post__pb2.Post.FromString,
                     response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'blog_proto.PostController', rpc_method_handlers)
+            'post.PostController', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
@@ -124,9 +124,9 @@ class PostController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_stream(request, target, '/blog_proto.PostController/List',
-            blog__proto_dot_post__pb2.PostListRequest.SerializeToString,
-            blog__proto_dot_post__pb2.Post.FromString,
+        return grpc.experimental.unary_stream(request, target, '/post.PostController/List',
+            blog_dot_protos_dot_post_dot_post__pb2.PostListRequest.SerializeToString,
+            blog_dot_protos_dot_post_dot_post__pb2.Post.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -141,9 +141,9 @@ class PostController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/blog_proto.PostController/Create',
-            blog__proto_dot_post__pb2.Post.SerializeToString,
-            blog__proto_dot_post__pb2.Post.FromString,
+        return grpc.experimental.unary_unary(request, target, '/post.PostController/Create',
+            blog_dot_protos_dot_post_dot_post__pb2.Post.SerializeToString,
+            blog_dot_protos_dot_post_dot_post__pb2.Post.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -158,9 +158,9 @@ class PostController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/blog_proto.PostController/Retrieve',
-            blog__proto_dot_post__pb2.PostRetrieveRequest.SerializeToString,
-            blog__proto_dot_post__pb2.Post.FromString,
+        return grpc.experimental.unary_unary(request, target, '/post.PostController/Retrieve',
+            blog_dot_protos_dot_post_dot_post__pb2.PostRetrieveRequest.SerializeToString,
+            blog_dot_protos_dot_post_dot_post__pb2.Post.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -175,9 +175,9 @@ class PostController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/blog_proto.PostController/Update',
-            blog__proto_dot_post__pb2.Post.SerializeToString,
-            blog__proto_dot_post__pb2.Post.FromString,
+        return grpc.experimental.unary_unary(request, target, '/post.PostController/Update',
+            blog_dot_protos_dot_post_dot_post__pb2.Post.SerializeToString,
+            blog_dot_protos_dot_post_dot_post__pb2.Post.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
@@ -192,8 +192,8 @@ class PostController(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/blog_proto.PostController/Destroy',
-            blog__proto_dot_post__pb2.Post.SerializeToString,
+        return grpc.experimental.unary_unary(request, target, '/post.PostController/Destroy',
+            blog_dot_protos_dot_post_dot_post__pb2.Post.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

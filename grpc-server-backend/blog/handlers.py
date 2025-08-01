@@ -1,5 +1,5 @@
 from .services import PostService
-from blog_proto import post_pb2_grpc
+from .protos.post import post_pb2_grpc
 
 
 def grpc_handlers(server):

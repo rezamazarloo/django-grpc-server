@@ -1,4 +1,9 @@
-*.sqlite3
 .venv
 __pycache__
-staticfiles
+.env
+.vscode/extensions/
+media/
+logs/
+db.sqlite3
+staticfiles/
+*.mo
